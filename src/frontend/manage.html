@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="User Management - User Management System">
+    <title>User Management - User Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body class="dashboard-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo">
+                    <span class="gradient-text">User Management System</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="register.html" class="nav-link">Register User</a>
+                <a href="manage.html" class="nav-link active">User Management</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <!-- Alert Container -->
+        <div id="alert-container"></div>
+
+        <!-- Statistics Cards -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">👥</span>
+                        <span class="stat-label">Total Users</span>
+                    </div>
+                    <div class="stat-value" id="total-users">0</div>
+                    <div class="stat-footer">
+                        <span class="stat-count" id="user-count">registered users</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">📊</span>
+                        <span class="stat-label">Average Age</span>
+                    </div>
+                    <div class="stat-value" id="average-age">0</div>
+                    <div class="stat-footer">
+                        <span class="stat-count">years old</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">📅</span>
+                        <span class="stat-label">Latest Addition</span>
+                    </div>
+                    <div class="stat-value stat-category" id="latest-user">-</div>
+                    <div class="stat-footer">
+                        <span class="stat-count" id="latest-date">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Management Section -->
+        <section class="user-section">
+            <div class="section-header">
+                <h2>All Users</h2>
+                <a href="register.html" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    Add New User
+                </a>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="controls-bar">
+                <div class="search-box">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search by name, email, or mobile...">
+                </div>
+                <div class="filter-group">
+                    <select id="sort-select" class="filter-select">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="age-asc">Age (Low to High)</option>
+                        <option value="age-desc">Age (High to Low)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Users List -->
+            <div class="users-container">
+                <div id="users-list" class="users-list">
+                    <!-- Users will be loaded here -->
+                </div>
+                <div id="empty-state" class="empty-state" style="display: none;">
+                    <div class="empty-icon">👥</div>
+                    <h3>No Users Found</h3>
+                    <p>No users match your search criteria or no users have been added yet</p>
+                    <a href="register.html" class="btn btn-primary">Add First User</a>
+                </div>
+                <div id="loading-state" class="loading-state">
+                    <div class="loader-large"></div>
+                    <p>Loading users...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- User Details Modal -->
+    <div id="user-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>User Details</h3>
+                <button class="modal-close" id="close-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="user-details">
+                <!-- User details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit User</h3>
+                <button class="modal-close" id="close-edit-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+            <form id="edit-form" class="modal-form">
+                <input type="hidden" id="edit-user-id">
+
+                <div class="form-group">
+                    <label for="edit-name">Full Name *</label>
+                    <input type="text" id="edit-name" placeholder="Enter full name" required minlength="2">
+                    <span class="form-error" id="edit-name-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-email">Email Address *</label>
+                    <input type="email" id="edit-email" placeholder="user@example.com" required>
+                    <span class="form-error" id="edit-email-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-mobile">Mobile Number *</label>
+                    <input type="tel" id="edit-mobile" placeholder="+1-555-0123" required>
+                    <span class="form-error" id="edit-mobile-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-age">Age *</label>
+                    <input type="number" id="edit-age" placeholder="Enter age" required min="1" max="150">
+                    <span class="form-error" id="edit-age-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-address">Address *</label>
+                    <textarea id="edit-address" rows="3" placeholder="Enter full address" required
+                        minlength="5"></textarea>
+                    <span class="form-error" id="edit-address-error"></span>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-edit-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="save-user-btn">
+                        <span class="btn-text">Update User</span>
+                        <span class="btn-loader" style="display: none;">
+                            <span class="loader"></span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/users.js"></script>
+</body>
+
+</html>

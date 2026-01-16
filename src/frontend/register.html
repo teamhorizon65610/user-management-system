@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register New User - User Management System">
+    <title>Register User - User Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body class="auth-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-transparent">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo">
+                    <span class="gradient-text">User Management System</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="register.html" class="nav-link active">Register User</a>
+                <a href="manage.html" class="nav-link">User Management</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-background"></div>
+
+        <div class="auth-content">
+            <!-- Left Side - Branding -->
+            <div class="auth-branding">
+                <div class="brand-content">
+                    <!-- Icon with Purple Background -->
+                    <div class="brand-icon-container">
+                        <div class="brand-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                                <line x1="20" y1="8" x2="20" y2="14"></line>
+                                <line x1="23" y1="11" x2="17" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <h1 class="brand-title">
+                        <span class="gradient-text">Add New</span>
+                        <br>User
+                    </h1>
+                    <p class="brand-subtitle">
+                        Fill in the user details to add them to the system.
+                    </p>
+                    <div class="brand-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">10K+</div>
+                            <div class="stat-label">Users Managed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">99%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">24/7</div>
+                            <div class="stat-label">Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Registration Form -->
+            <div class="auth-form-container">
+                <div class="auth-form-wrapper">
+                    <div class="form-header">
+                        <h2>Register New User</h2>
+                        <p>Enter user information below</p>
+                    </div>
+
+                    <!-- Alert Container -->
+                    <div id="alert-container"></div>
+
+                    <!-- Registration Form -->
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="Enter full name" required
+                                minlength="2" autocomplete="name">
+                            <span class="form-error" id="name-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="user@example.com" required
+                                autocomplete="email">
+                            <span class="form-error" id="email-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number *</label>
+                            <input type="text" id="mobile" name="mobile" placeholder="Enter 10 digit mobile number"
+                                required maxlength="10" pattern="[0-9]{10}" autocomplete="tel" inputmode="numeric">
+                            <span class="form-error" id="mobile-error"></span>
+                            <span class="form-hint">Enter exactly 10 digits</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">Age *</label>
+                            <input type="number" id="age" name="age" placeholder="Enter age" required min="1" max="150">
+                            <span class="form-error" id="age-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address *</label>
+                            <textarea id="address" name="address" rows="3" placeholder="Enter full address" required
+                                minlength="5"></textarea>
+                            <span class="form-error" id="address-error"></span>
+                            <span class="form-hint">Minimum 5 characters</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" id="register-btn">
+                            <span class="btn-text">Register User</span>
+                            <span class="btn-loader" style="display: none;">
+                                <span class="loader"></span>
+                            </span>
+                        </button>
+
+                        <div class="form-footer">
+                            <p>Want to view all users? <a href="manage.html" class="link-primary">Go to User
+                                    Management</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/register.js"></script>
+</body>
+
+</html>
