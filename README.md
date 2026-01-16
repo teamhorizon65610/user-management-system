@@ -1,4 +1,4 @@
-﻿# 💰 Smart Expense Tracker
+﻿#  User Management System
 
 > A modern, full-stack expense tracking application with beautiful UI and robust backend
 
