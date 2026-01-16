@@ -1,3 +1,3 @@
-# smart-expenseTracker-devops-assignment
+# User Management System
 
 #UPDATE THIS README FILE WITH YOUR IMPLEMENTATIONS
